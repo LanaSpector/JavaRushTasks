@@ -12,6 +12,7 @@ public class Solution {
     public static String hit = "🎯";
     public static int width = 30;
     public static int height = 10;
+    public static int[][] bombs = new int[height][width];
     public static String[][] field = new String[height][width];
 
 
@@ -24,6 +25,18 @@ public class Solution {
                 } else {
                     field[i][j] = empty;
                     System.out.print(field[i][j]);
+                }
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < bombs.length; i++) {
+            for (int j = 0; j < bombs[i].length; j++) {
+                if (j < 10) {
+                    bombs[i][j] = 1;
+                    System.out.print(bombs[i][j]);
+                } else {
+                    bombs[i][j] = 0;
+                    System.out.print(bombs[i][j]);
                 }
             }
             System.out.println();
