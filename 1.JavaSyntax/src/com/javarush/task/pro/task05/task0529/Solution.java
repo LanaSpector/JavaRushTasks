@@ -12,32 +12,50 @@ public class Solution {
     public static String hit = "🎯";
     public static int width = 30;
     public static int height = 10;
-    public static int[][] bombs = new int[height][width];
     public static String[][] field = new String[height][width];
-
+    public static int[][] bombs = new int[height][width];
 
     public static void main(String[] args) {
+        int n = (int) (Math.random()*30);
+
+        for (int i = 0; i < field.length; i++) {
+            Arrays.fill(field[i], empty);
+        }
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
-                if (j == 0) {
+                if(j==n) {
                     field[i][j] = robotank;
-                    System.out.print(field[i][j]);
+                 //   System.out.print(field[i][j]);
                 } else {
-                    field[i][j] = empty;
-                    System.out.print(field[i][j]);
+               //     System.out.print(field[i][j]);
                 }
             }
-            System.out.println();
+       //    System.out.println();
         }
         for (int i = 0; i < bombs.length; i++) {
             for (int j = 0; j < bombs[i].length; j++) {
-                if (j < 10) {
+                if(j<10) {
                     bombs[i][j] = 1;
-                    System.out.print(bombs[i][j]);
-                } else {
-                    bombs[i][j] = 0;
-                    System.out.print(bombs[i][j]);
+            //       System.out.print(bombs[i][j]);
                 }
+                else {
+                    bombs[i][j] = 0;
+            //       System.out.print(bombs[i][j]);
+                }
+            }
+          // System.out.println();
+        }
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                if (bombs[i][j] == 1 && robotank.equals(field[i][j])) {
+                    field[i][j] = hit;
+                }
+            }
+        }
+
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                System.out.print(field[i][j]);
             }
             System.out.println();
         }
