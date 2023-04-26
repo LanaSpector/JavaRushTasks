@@ -16,43 +16,36 @@ public class Solution {
     public static int[][] bombs = new int[height][width];
 
     public static void main(String[] args) {
-        int n = (int) (Math.random()*30);
+
 
         for (int i = 0; i < field.length; i++) {
             Arrays.fill(field[i], empty);
         }
         for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                if(j==n) {
-                    field[i][j] = robotank;
-                 //   System.out.print(field[i][j]);
-                } else {
-               //     System.out.print(field[i][j]);
+            int j = (int) (Math.random() * width);
+            field[i][j] = robotank;
+        }
+        int countRobotank = 0;
+        while(countRobotank<10) {
+            bombs = new int[height][width];
+            for (int i = 0; i < bombs.length; i++) {
+                for (int count = 0; count < 10; ) {
+                    int j = (int) (Math.random() * width);
+                    if (bombs[i][j] == 0) {
+                        bombs[i][j] = 1;
+                        count++;
+                    }
                 }
             }
-       //    System.out.println();
-        }
-        for (int i = 0; i < bombs.length; i++) {
-            for (int j = 0; j < bombs[i].length; j++) {
-                if(j<10) {
-                    bombs[i][j] = 1;
-            //       System.out.print(bombs[i][j]);
-                }
-                else {
-                    bombs[i][j] = 0;
-            //       System.out.print(bombs[i][j]);
-                }
-            }
-          // System.out.println();
-        }
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                if (bombs[i][j] == 1 && robotank.equals(field[i][j])) {
-                    field[i][j] = hit;
+            for (int i = 0; i < field.length; i++) {
+                for (int j = 0; j < field[i].length; j++) {
+                    if (bombs[i][j] == 1 && robotank.equals(field[i][j])) {
+                        field[i][j] = hit;
+                        countRobotank++;
+                    }
                 }
             }
         }
-
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
                 System.out.print(field[i][j]);
