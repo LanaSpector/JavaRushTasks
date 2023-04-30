@@ -11,7 +11,7 @@ public class Nimrod {
     }
 
     public int attack() {
-        return laser;
+        return angelicaKiss;
     }
 
     public byte applyShield(int damage) {
