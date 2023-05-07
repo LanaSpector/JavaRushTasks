@@ -17,11 +17,13 @@ public class Solution {
     }
 
     public static int changeBit(int number, int bit, boolean activate) {
-        if(activate==true) {
-            return number | bit;
-        }
-        else {
-            return number & ~bit;
-        }
+//        if(activate) {
+//            return number | bit;
+//        }
+//        else {
+//            return number & ~bit;
+//        }
+        return activate ? number | bit : number & ~bit;
     }
+
 }
