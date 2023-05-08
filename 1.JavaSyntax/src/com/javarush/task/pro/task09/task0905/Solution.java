@@ -15,30 +15,30 @@ public class Solution {
     }
 
     public static int toOctal(int decimalNumber) {
-        if(decimalNumber<=0) {
-            return  0;
+        if (decimalNumber <= 0) {
+            return 0;
         }
         int i = 0;
         int octalNumber = 0;
-        while(decimalNumber != 0) {
-          octalNumber = octalNumber + (decimalNumber%8) * (int)(Math.pow(10, i));
-          decimalNumber = decimalNumber/8;
-          i++;
+        while (decimalNumber != 0) {
+            octalNumber = octalNumber + (decimalNumber % 8) * (int) (Math.pow(10, i));
+            decimalNumber = decimalNumber / 8;
+            i++;
         }
         return octalNumber;
     }
 
     public static int toDecimal(int octalNumber) {
-        if(octalNumber<=0) {
-            return  0;
+        if (octalNumber <= 0) {
+            return 0;
         }
         int i = 0;
-        int decimalNumber = 0;
-        while(octalNumber != 0) {
-            decimalNumber = decimalNumber + (octalNumber%10) * (int)(Math.pow(8, i));
+        int decimaNumber = 0;
+        while (octalNumber != 0) {
+            decimaNumber = decimaNumber + (octalNumber % 10) * (int) Math.pow(8, i);
             octalNumber = octalNumber / 10;
             i++;
         }
-        return decimalNumber;
+        return decimaNumber;
     }
 }
