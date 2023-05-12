@@ -1,6 +1,6 @@
 package com.javarush.task.pro.task09.task0920;
 
-/* 
+/*
 Абордаж
 */
 
@@ -74,7 +74,7 @@ public class NimrodAi {
         } else if ("armoury".equals(roomName)) {
             return armoury;
         } else if ("securityRoom".equals(roomName)) {
-        return securityRoom;
+            return securityRoom;
         } else if ("reactor".equals(roomName)) {
             return reactor;
         } else if ("telecom".equals(roomName)) {
