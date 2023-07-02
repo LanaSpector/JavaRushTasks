@@ -14,10 +14,22 @@ public class Solution {
             new Robot("B1"), new Robot("Diego"), new Robot("Zed")));
 
     public static void main(String[] args) {
-    //напишите тут ваш код
+        rescueRobots();
+        emptyGarbageBin();
+        printList(rescuedRobots);
     }
 
-    //напишите тут ваш код
+    private static List<Robot> rescuedRobots = new ArrayList<>();
+
+    public static void rescueRobots() {
+        for (int i = 0; i < cableContents.size(); i++) {
+            if (cableContents.get(i).getName().equals("Amigo") || cableContents.get(i).getName().equals("Diego")) {
+                rescuedRobots.add(cableContents.get(i));
+                cableContents.remove(i);
+                i--;
+            }
+        }
+    }
 
     private static void emptyGarbageBin() {
         cableContents.clear();
