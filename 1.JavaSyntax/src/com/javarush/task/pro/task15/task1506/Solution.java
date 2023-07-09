@@ -13,7 +13,7 @@ import java.util.Scanner;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
+    public static void main1(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         List<String> list = Files.readAllLines(Path.of(scanner.nextLine()));
         for (String string : list) {
@@ -25,6 +25,14 @@ public class Solution {
                 System.out.print(chars[i]);
             }
             System.out.println();
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        List<String> list = Files.readAllLines(Path.of(scanner.nextLine()));
+        for (String string : list) {
+            System.out.println(string.replaceAll("[., ]", ""));
         }
     }
 }
