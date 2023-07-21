@@ -9,7 +9,12 @@ import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        //напишите тут ваш код
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String key;
+        while (!(key = reader.readLine()).equals("")) {
+            Cat cat = CatFactory.getCatByKey(key);
+            System.out.println(cat.toString());
+        }
     }
 
     static class CatFactory {
