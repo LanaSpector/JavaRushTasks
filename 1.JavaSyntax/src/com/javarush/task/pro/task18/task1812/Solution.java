@@ -2,6 +2,7 @@ package com.javarush.task.pro.task18.task1812;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Stream;
 
 /* 
@@ -29,6 +30,7 @@ public class Solution {
     }
 
     public static Stream<Language> sortByRanking(ArrayList<Language> languages) {
-        return languages.stream().sorted((l1, l2) -> l2.getRanking().compareTo(l1.getRanking()));
+//        return languages.stream().sorted((l1, l2) -> l2.getRanking().compareTo(l1.getRanking()));
+          return languages.stream().sorted(Comparator.comparing(Language::getRanking).reversed());
     }
 }
