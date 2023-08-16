@@ -13,16 +13,33 @@ public class Solution {
         Person person = null;
         String key = null;
 
-        //тут цикл по чтению ключей, пункт 1
-        {
-            //создаем объект, пункт 2
-
-            doWork(person); //вызываем doWork
+        while (true) {
+            String string = reader.readLine();
+            if (string.equalsIgnoreCase("user")) {
+                person = new Person.User();
+            } else if (string.equalsIgnoreCase("loser")) {
+                person = new Person.Loser();
+            } else if (string.equalsIgnoreCase("coder")) {
+                person = new Person.Coder();
+            } else if (string.equalsIgnoreCase("proger")) {
+                person = new Person.Proger();
+            } else {
+                break;
+            }
+            doWork(person);//вызываем doWork
 
         }
     }
 
     public static void doWork(Person person) {
-        // пункт 3
+        if (person instanceof Person.User) {
+            ((Person.User) person).live();
+        } else if (person instanceof Person.Loser) {
+            ((Person.Loser) person).doNothing();
+        } else if (person instanceof Person.Coder) {
+            ((Person.Coder) person).writeCode();
+        } else if (person instanceof Person.Proger) {
+            ((Person.Proger) person).enjoy();
+        }
     }
 }
