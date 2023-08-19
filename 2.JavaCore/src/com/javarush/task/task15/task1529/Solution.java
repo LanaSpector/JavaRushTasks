@@ -14,12 +14,24 @@ public class Solution {
     }
 
     static {
-        //add your code here - добавьте код тут
+        reset();
     }
 
     public static CanFly result;
 
-    public static void reset() {
-        //add your code here - добавьте код тут
+    public static void reset() throws IllegalArgumentException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            String key = reader.readLine();
+            if ("plane".equals(key)) {
+                key = reader.readLine();
+                result = new Plane(Integer.parseInt(key));
+            } else if ("helicopter".equals(key)) {
+                result = new Helicopter();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
