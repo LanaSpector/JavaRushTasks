@@ -14,21 +14,19 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(System.in));
-        String source = fileReader.readLine();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(source)));
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileReader.readLine())))) {
 
-        List<Integer> list = new ArrayList<>();
-        while (reader.ready()) {
-            String str = reader.readLine();
-            int s = Integer.parseInt(str);
-            if(s%2==0) {
-                list.add(s);
+            List<Integer> list = new ArrayList<>();
+            while (reader.ready()) {
+                String str = reader.readLine();
+                int s = Integer.parseInt(str);
+                if (s % 2 == 0) {
+                    list.add(s);
+                }
             }
+            Collections.sort(list);
+            list.forEach(element -> System.out.println(element));
         }
-        Collections.sort(list);
-        System.out.println(list);
-
-        reader.close();
     }
 }
