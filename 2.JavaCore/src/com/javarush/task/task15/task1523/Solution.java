@@ -6,11 +6,11 @@ package com.javarush.task.task15.task1523;
 
 public class Solution {
 
-    public Solution(double d) {
+    public Solution(int a) {
     }
-    private Solution(int e) {
+    private Solution(long s) {
     }
-    protected Solution(short g) {
+    protected Solution(boolean r) {
     }
     Solution() {
     }
