@@ -66,9 +66,31 @@ public class Solution {
                 }
                 person2.setBirthDate(input.parse(args[8]));
             }
-//            System.out.println(person);
-//            System.out.println(person2);
+        } else if (args[0].equals("-d")) {
+            for (int i = 1; i < allPeople.size(); i+=4) {
+                int id = Integer.parseInt(args[1]);
+                if(id>=0 && id< allPeople.size()) {
+                    person = allPeople.get(id);
+                    person.setName(null);
+                    person.setSex(null);
+                    person.setBirthDate(null);
+                }
 
+            }
+//            System.out.println(person);
+        } else if (args[0].equals("-i")) {
+            int id = Integer.parseInt(args[1]);
+            if(id >= 0 && id < allPeople.size()) {
+                person = allPeople.get(id);
+                String sex = null;
+                if(person.getSex() == Sex.MALE) {
+                    sex = "м";
+                } else if (person.getSex() == Sex.FEMALE) {
+                    sex = "ж";
+                }
+                String date = output.format(person.getBirthDate());
+                System.out.println(person.getName()+" "+sex+" "+date);
+            }
         }
     }
 }
