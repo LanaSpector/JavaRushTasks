@@ -28,14 +28,14 @@ public class Solution {
             if (args[2].equalsIgnoreCase("м")) {
                 Date date = input.parse(args[3]);
                 person = Person.createMale(args[1], date);
-            } else if (args[2].equals("ж")) {
+            } else if (args[2].equalsIgnoreCase("ж")) {
                 Date date = input.parse(args[3]);
                 person = Person.createFemale(args[1], date);
             }
-            if (args[5].equals("м")) {
+            if (args[5].equalsIgnoreCase("м")) {
                 Date date2 = input.parse(args[6]);
                 person2 = Person.createMale(args[4], date2);
-            } else if (args[5].equals("ж")) {
+            } else if (args[5].equalsIgnoreCase("ж")) {
                 Date date2 = input.parse(args[6]);
                 person2 = Person.createFemale(args[4], date2);
             }
@@ -44,7 +44,30 @@ public class Solution {
             System.out.println(allPeople.lastIndexOf(person));
             System.out.println(allPeople.lastIndexOf(person2));
         } else if (args[0].equals("-u")) {
-
+            int id = Integer.parseInt(args[1]);
+            if (id >= 0 && id < allPeople.size()) {
+                person = allPeople.get(id);
+                person.setName(args[2]);
+                if (args[3].equalsIgnoreCase("м")) {
+                    person.setSex(Sex.MALE);
+                } else if (args[3].equalsIgnoreCase("ж")) {
+                    person.setSex(Sex.FEMALE);
+                }
+                person.setBirthDate(input.parse(args[4]));
+            }
+            int id2 = Integer.parseInt(args[5]);
+            if (id2 >= 0 && id2 < allPeople.size()) {
+                person2 = allPeople.get(id2);
+                person2.setName(args[6]);
+                if (args[7].equalsIgnoreCase("м")) {
+                    person2.setSex(Sex.MALE);
+                } else if (args[7].equalsIgnoreCase("ж")) {
+                    person2.setSex(Sex.FEMALE);
+                }
+                person2.setBirthDate(input.parse(args[8]));
+            }
+//            System.out.println(person);
+//            System.out.println(person2);
 
         }
     }
