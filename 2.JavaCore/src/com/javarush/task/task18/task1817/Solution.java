@@ -8,19 +8,23 @@ import java.io.IOException;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         try (FileReader reader = new FileReader(args[0])) {
             int countAll = 0;
             int countSpace = 0;
             while (reader.ready()) {
-                String symbol = String.valueOf(reader.read());
+                String symbol = String.valueOf((char) reader.read());
+//                char symbol = (char)reader.read();
+//                if (Character.isSpaceChar(symbol)) {
                 if(symbol.equals(" ")) {
                     countSpace++;
                 }
                 countAll++;
             }
-            double sum = (double) (countAll/countSpace)*100;
-            System.out.printf("%.2f", sum);
+            if (countAll != 0) {
+                double sum = (double) countSpace / countAll * 100;
+                System.out.printf("%.2f", sum);
+            }
         }
     }
 }
