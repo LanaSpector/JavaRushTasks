@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        StringBuilder string = new StringBuilder();
+        StringBuffer string = new StringBuffer();
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]));
              FileWriter writer = new FileWriter(args[1])) {
             while (reader.ready()) {
@@ -22,9 +22,9 @@ public class Solution {
                         string.append(line).append(" ");
                     }
                 }
-                String str = string.toString().trim().replaceAll(" ", ",");
-                writer.write(str);
             }
+            String str = string.toString().trim().replaceAll(" ", ",");
+            writer.write(str);
         }
 
     }
