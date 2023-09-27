@@ -8,13 +8,13 @@ import java.io.*;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
              BufferedReader fileReader = new BufferedReader(new FileReader(reader.readLine()))) {
             while (fileReader.ready()) {
                 String line = fileReader.readLine();
-                stringBuilder.append(line).reverse();
-                System.out.println(stringBuilder);
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(line).reverse();
+                System.out.println(buffer.toString());
             }
         }
     }
