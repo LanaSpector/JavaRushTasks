@@ -1,0 +1,1 @@
+select if(27 >= 12, 'yes', 'no');
