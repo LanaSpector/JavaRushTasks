@@ -1,0 +1,14 @@
+taskKey="com.javarush.task.sql.task02.task0216"\n\ntask0216
+
+Напиши запрос, который согласно данных из поля position таблицы employee вернет такую информацию:
+- yes, если значение position равно backend developer
+- yes, если значение position равно frontend developer
+- no, при любом другом значении position
+Ограничь выборку сотрудниками, у которых department = cool devs
+Используй CASE вида CASE WHEN condition1 THEN result1 WHEN condition2 ... FROM table
+
+
+Требования:
+1.	Запрос должен быть реализован согласно условию.
+
+
