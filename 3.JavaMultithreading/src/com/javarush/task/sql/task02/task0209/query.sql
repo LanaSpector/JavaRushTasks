@@ -1,0 +1,1 @@
+select nullif(8, 18);
