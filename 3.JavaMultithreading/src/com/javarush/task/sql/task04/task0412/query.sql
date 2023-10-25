@@ -1,1 +1,1 @@
-select ceil(a), ceil(b), ceiling(a), ceiling(b) from math;
+select ceil(a), ceiling(b) from math;
