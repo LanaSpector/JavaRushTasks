@@ -1,0 +1,1 @@
+select LOCALIME(), ADDTIME(LOCALIME(), null), ADDTIME(LOCALIME(), INTERVAL 33 second));
