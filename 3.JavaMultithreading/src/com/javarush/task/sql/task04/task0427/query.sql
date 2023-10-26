@@ -1,0 +1,1 @@
+select * from event where DATEDIFF(date_time, CURDATE()) < 20;
