@@ -1,1 +1,3 @@
-select brand, model, booked_quantity from car where model like 'k%';
+select brand, model, booked_quantity
+from car
+where model like 'k%';

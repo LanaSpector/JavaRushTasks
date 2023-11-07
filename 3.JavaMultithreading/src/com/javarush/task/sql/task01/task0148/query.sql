@@ -1,1 +1,3 @@
-select required, identifier, description from parts where description is not null;
+select required, identifier, description
+from parts
+where description is not null;
