@@ -6,7 +6,7 @@ import com.javarush.task.task36.task3608.model.service.UserServiceImpl;
 
 import java.util.List;
 
-public class MainModel implements Model{
+public class MainModel implements Model {
     private UserService userService = new UserServiceImpl();
     private ModelData modelData = new ModelData();
 
@@ -26,5 +26,10 @@ public class MainModel implements Model{
         List<User> users = userService.getAllDeletedUsers();
         modelData.setUsers(users);
         modelData.setDisplayDeletedUserList(true);
+    }
+
+    public void loadUserById(long userId) {
+        User user = userService.getUsersById(userId);
+        modelData.setActiveUser(user);
     }
 }
