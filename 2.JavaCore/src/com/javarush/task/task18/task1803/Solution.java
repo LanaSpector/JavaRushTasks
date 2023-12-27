@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /* 
 Самые частые байты
@@ -21,25 +19,20 @@ public class Solution {
                 byteCount[stream.read()]++;
             }
         }
-//        int maxCount = byteCount[0];
-//        for (int i = 0; i < byteCount.length; i++) {
-//            if (byteCount[i] > maxCount) {
-//                maxCount = byteCount[i];
-//            }
-//        }
-//        List<Integer> list = new ArrayList<>();
-//        for (int i = 0; i < byteCount.length; i++) {
-//            if (byteCount[i] == maxCount) {
-//                list.add(i);
-//            }
-//        }
-//        for (Integer integer : list) {
-//            System.out.print(integer + " ");
-//        }
-        IntStream.range(0, byteCount.length)
-                .filter(i -> byteCount[i] == Arrays.stream(byteCount).max().getAsInt())
-                .boxed()
-                .toList()
-                .forEach(i -> System.out.print(i + " "));
+        int maxCount = byteCount[0];
+        for (int i = 0; i < byteCount.length; i++) {
+            if (byteCount[i] > maxCount) {
+                maxCount = byteCount[i];
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < byteCount.length; i++) {
+            if (byteCount[i] == maxCount) {
+                list.add(i);
+            }
+        }
+        for (Integer integer : list) {
+            System.out.print(integer + " ");
+        }
     }
 }

@@ -20,9 +20,6 @@ public class Solution {
     }
 
     public static void main(String[] args) throws ParseException {
-        if(args == null || args.length == 0) {
-            throw  new RuntimeException();
-        }
         SimpleDateFormat input = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         Person person = null;
