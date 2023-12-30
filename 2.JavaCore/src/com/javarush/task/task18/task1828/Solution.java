@@ -34,10 +34,16 @@ public class Solution {
                     String quantity = checkLength(args[4], 4);
                     map.put(id, productName + price + quantity);
                 }
-
+            } else if (args[0].equals("-d")) {
+                map.remove(args[1].trim());
             }
         }
-
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                writer.write(checkLength(entry.getKey(), 8) + entry.getValue());
+                writer.newLine();
+            }
+        }
     }
 
     private static String checkLength(String string, int limit) {
