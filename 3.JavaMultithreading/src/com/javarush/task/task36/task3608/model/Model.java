@@ -10,4 +10,6 @@ public interface Model {
     public void loadUserById(long userId);
 
     public void deleteUserById(long id);
+
+    void changeUserData(String name, long id, int level);
 }
