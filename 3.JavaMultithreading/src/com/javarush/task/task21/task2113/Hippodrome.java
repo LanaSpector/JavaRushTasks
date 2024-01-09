@@ -15,7 +15,7 @@ public class Hippodrome {
         return horses;
     }
 
-    void run() throws InterruptedException {
+    public void run() throws InterruptedException {
         for (int i = 0; i < 100; i++) {
             move();
             print();
@@ -23,10 +23,13 @@ public class Hippodrome {
         }
     }
 
-    void move() {
+    public void move() {
+        for (Horse horse : horses) {
+            horse.move();
+        }
     }
 
-    void print() {
+    public void print() {
     }
 
     public static void main(String[] args) {
