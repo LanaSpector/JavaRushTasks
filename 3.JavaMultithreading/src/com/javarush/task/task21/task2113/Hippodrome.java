@@ -15,6 +15,15 @@ public class Hippodrome {
         return horses;
     }
 
+    void run() {
+    }
+
+    void move() {
+    }
+
+    void print() {
+    }
+
     public static void main(String[] args) {
         List<Horse> horses = new ArrayList<>();
         Horse whiteHorse = new Horse("White", 3, 0);
@@ -26,7 +35,5 @@ public class Hippodrome {
         horses.add(redHorse);
 
         game = new Hippodrome(horses);
-
-
     }
 }
