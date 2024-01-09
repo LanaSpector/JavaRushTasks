@@ -15,7 +15,12 @@ public class Hippodrome {
         return horses;
     }
 
-    void run() {
+    void run() throws InterruptedException {
+        for (int i = 0; i < 100; i++) {
+            move();
+            print();
+            Thread.sleep(200);
+        }
     }
 
     void move() {
