@@ -38,7 +38,7 @@ public class Hippodrome {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<Horse> horses = new ArrayList<>();
         Horse whiteHorse = new Horse("White", 3, 0);
         Horse blueHorse = new Horse("Blue", 3, 0);
@@ -49,5 +49,6 @@ public class Hippodrome {
         horses.add(redHorse);
 
         game = new Hippodrome(horses);
+        game.run();
     }
 }
