@@ -40,5 +40,9 @@ public class Horse {
     }
 
     public void print() {
+        for (int i = 0; i < Math.floor(distance); i++) {
+            System.out.print(".");
+        }
+        System.out.print(name);
     }
 }
