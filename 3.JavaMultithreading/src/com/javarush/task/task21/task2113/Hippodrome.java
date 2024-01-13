@@ -1,6 +1,7 @@
 package com.javarush.task.task21.task2113;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Hippodrome {
@@ -51,4 +52,13 @@ public class Hippodrome {
         game = new Hippodrome(horses);
         game.run();
     }
+
+    public Horse getWinner() {
+        return horses.stream().max(Comparator.comparingDouble(Horse::getDistance)).get();
+    }
+
+    public void printWinner() {
+        System.out.println("Winner is " + getWinner().getName() + "!");
+    }
+
 }
