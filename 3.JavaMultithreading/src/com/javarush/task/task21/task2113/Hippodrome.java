@@ -51,6 +51,8 @@ public class Hippodrome {
 
         game = new Hippodrome(horses);
         game.run();
+
+        game.printWinner();
     }
 
     public Horse getWinner() {
