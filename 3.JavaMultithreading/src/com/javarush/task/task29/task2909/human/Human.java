@@ -1,5 +1,7 @@
 package com.javarush.task.task29.task2909.human;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -78,5 +80,14 @@ public class Human implements Alive {
 
     public void printSize() {
         System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
+    }
+
+    public void printData() {
+
+        System.out.println(getPosition() + ": " + name);
+    }
+
+    public String getPosition() {
+        return "Человек";
     }
 }
