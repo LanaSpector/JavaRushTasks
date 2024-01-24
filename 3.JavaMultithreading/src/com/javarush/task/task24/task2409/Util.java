@@ -17,32 +17,67 @@ public class Util {
     public static List<Jeans> getAllJeans() {
         abstract class AbstractJeans implements Jeans {
             private int id;
-            private double price;
             private int length;
             private int size;
+            private double price;
 
-
-            public AbstractJeans() {
+            public AbstractJeans(int id, int length, int size, double price) {
+                this.id = id;
+                this.length = length;
+                this.size = size;
+                this.price = price;
             }
 
             @Override
             public int getId() {
-                return 0;
+                return id;
             }
 
             @Override
             public double getPrice() {
-                return 0;
+                return price;
             }
 
             @Override
             public int getLength() {
-                return 0;
+                return length;
             }
 
             @Override
             public int getSize() {
-                return 0;
+                return size;
+            }
+
+            @Override
+            public String toString() {
+                return getClass().getSimpleName() + "{" +
+                        "id=" + id +
+                        ", price=" + price +
+                        ", length=" + length +
+                        ", size=" + size +
+                        '}';
+            }
+        }
+
+        class Levis extends AbstractJeans {
+            public Levis(int id, int length, int size, double price) {
+                super(id, length, size, price);
+            }
+
+            @Override
+            public String getTM() {
+                return Levis.class.getSimpleName();
+            }
+        }
+
+        class Denim extends AbstractJeans {
+            public Denim(int id, int length, int size, double price) {
+                super(id, length, size, price);
+            }
+
+            @Override
+            public String getTM() {
+                return Denim.class.getSimpleName();
             }
         }
 
