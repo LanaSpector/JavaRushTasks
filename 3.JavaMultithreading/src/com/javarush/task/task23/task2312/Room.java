@@ -6,10 +6,10 @@ public class Room {
     private Snake snake;
     private Mouse mouse;
 
-    public Room(int width, int height, Mouse mouse) {
+    public Room(int width, int height, Snake snake) {
         this.width = width;
         this.height = height;
-        this.mouse = mouse;
+        this.snake = snake;
     }
 
     public int getWidth() {
