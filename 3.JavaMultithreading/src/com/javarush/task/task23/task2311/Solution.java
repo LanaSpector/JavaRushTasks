@@ -40,7 +40,7 @@ public class Solution {
             private void someActions() throws InterruptedException {
                 eat();
                 play();
-                Solution.this.sleep(1000);
+                sleep(1000);
             }
         };
         thread.start();
