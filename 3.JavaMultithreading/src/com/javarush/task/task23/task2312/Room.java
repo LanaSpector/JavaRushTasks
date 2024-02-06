@@ -1,6 +1,7 @@
 package com.javarush.task.task23.task2312;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Room {
     private int width;
@@ -89,10 +90,27 @@ public class Room {
     }
 
     public void print() {
-        //Создаем массив, куда будем "рисовать" текущее состояние игры
-        //Рисуем все кусочки змеи
-        //Рисуем мышь
-        //Выводим все это на экран
+        int [][] matrix = new int[height][width];
+
+        ArrayList<SnakeSection> sections = new ArrayList<SnakeSection>(snake.getSections());
+        for (SnakeSection snakeSection : sections) {
+            matrix[snakeSection.getY()][snakeSection.getX()] = 1;
+        }
+
+        matrix[snake.getY()][snake.getX()] = snake.isAlive() ? 2 : 4;
+
+        matrix[mouse.getY()][mouse.getX()] = 3;
+
+        String[] symbols = {".", "x", "X", "^", "*"};
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                System.out.print(symbols[matrix[y][x]]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
     public void eatMouse() {
@@ -114,7 +132,6 @@ public class Room {
     }
 
     public void sleep() throws InterruptedException {
-//        int sleepCount = 500;
         if (snake.getSections().size() < 11) {
             Thread.sleep(500);
         } else if (snake.getSections().size() >= 11 && snake.getSections().size() < 15) {
