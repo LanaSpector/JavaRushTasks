@@ -36,11 +36,15 @@ public class Cat implements Pet {
                 if (i < 1) {
                     return name + " спит.";
                 } else {
-                    String name1 = name + " говорит м";
-                    for (int j = 0; j < i; j++) {
-                        name1 = name1 + "я";
-                    }
-                    return name1 + "у!";
+//                    String name1 = name + " говорит м";
+//                    for (int j = 0; j < i; j++) {
+//                        name1 = name1 + "я";
+//                    }
+//                    return name1 + "у!";
+
+//                    return name + " говорит м" + new String(new char[i]).replaceAll("\0", "я") + "у!";
+
+                    return name + " говорит м" + "я".repeat(i) + "у!";
                 }
             }
         }
