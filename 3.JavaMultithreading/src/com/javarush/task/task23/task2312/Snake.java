@@ -34,7 +34,7 @@ public class Snake {
 
     public Snake(int x, int y) {
         sections = new ArrayList<SnakeSection>();
-        sections.add(new SnakeSection(x, y));
+        sections.add(new SnakeSection(x,y));
         isAlive = true;
 
     }
@@ -57,4 +57,18 @@ public class Snake {
 
     public void move(int a, int b) {
     }
+
+    public void checkBorders(SnakeSection head) {
+        if (head.getX() < 0 || head.getY() < 0 ||
+                head.getX() >= Room.game.getWidth() ||
+                head.getY() >= Room.game.getHeight()
+        ) isAlive = false;
+    }
+
+    public void checkBody(SnakeSection head) {
+        if (sections.contains(head)) {
+            isAlive = false;
+        }
+    }
+
 }
