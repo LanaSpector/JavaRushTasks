@@ -34,7 +34,7 @@ public class Snake {
 
     public Snake(int x, int y) {
         sections = new ArrayList<SnakeSection>();
-        sections.add(new SnakeSection(x,y));
+        sections.add(new SnakeSection(x, y));
         isAlive = true;
 
     }
@@ -52,10 +52,32 @@ public class Snake {
         } else if (direction == SnakeDirection.LEFT) {
             move(-1, 0);
         }
-
     }
 
-    public void move(int a, int b) {
+    /**
+     * Метод перемещает змею в соседнюю клетку.
+     * Координаты клетки заданы относительно текущей головы с помощью переменных (dx, dy).
+     */
+    void move(int dx, int dy) {
+        SnakeSection head = sections.get(0);
+        head = new SnakeSection(head.getX() + dx, head.getY() + dy);
+
+        checkBorders(head);
+        if (!isAlive) return;
+
+        checkBody(head);
+        if (!isAlive) return;
+
+        Mouse mouse = Room.game.getMouse();
+        if (head.getX() == mouse.getX() && head.getY() == mouse.getY())
+        {
+            sections.add(0, head);
+            Room.game.eatMouse();
+        } else
+        {
+            sections.add(0, head);
+            sections.remove(sections.size() - 1);
+        }
     }
 
     public void checkBorders(SnakeSection head) {
