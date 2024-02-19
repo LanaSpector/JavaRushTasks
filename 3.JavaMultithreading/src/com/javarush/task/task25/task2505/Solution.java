@@ -20,6 +20,7 @@ public class Solution {
 //            setDaemon(true);
         }
 
+
         @Override
         public void run() {
             throw new NullPointerException("it's an example");
