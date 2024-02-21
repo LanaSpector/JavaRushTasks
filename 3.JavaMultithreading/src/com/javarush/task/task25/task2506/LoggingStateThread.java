@@ -1,7 +1,7 @@
 package com.javarush.task.task25.task2506;
 
 public class LoggingStateThread extends Thread {
-    private Thread thread;
+    private final Thread thread;
 
     public LoggingStateThread(Thread thread) {
         this.thread = thread;
