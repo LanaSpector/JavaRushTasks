@@ -74,13 +74,30 @@ public class Server {
                 Message message = connection.receive();
                 if (message.getType() == MessageType.TEXT) {
                     sendBroadcastMessage(new Message(MessageType.TEXT, userName + ": " + message.getData()));
-                }
-                else {
+                } else {
                     ConsoleHelper.writeMessage("Тип сообщения не соответствует протоколу");
                 }
             }
         }
 
+        @Override
+        public void run() {
+            String userName = null;
+            ConsoleHelper.writeMessage("Установлено соединение с удаленным адресом " + socket.getRemoteSocketAddress());
+            try (Connection connection = new Connection(socket)) {
+                userName = serverHandshake(connection);
+                sendBroadcastMessage(new Message(MessageType.USER_ADDED, userName));
+                notifyUsers(connection, userName);
+                serverMainLoop(connection, userName);
+            } catch (IOException | ClassNotFoundException e) {
+                ConsoleHelper.writeMessage("Произошла ошибка при обмене данными с удаленным адресом " + socket.getRemoteSocketAddress());
+            }
+            if (userName != null) {
+                connectionMap.remove(userName);
+                sendBroadcastMessage(new Message(MessageType.USER_REMOVED, userName));
+            }
+            ConsoleHelper.writeMessage("Соединение с удаленным адресом закрыто");
+        }
 
     }
 
