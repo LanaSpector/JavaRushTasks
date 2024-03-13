@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
@@ -56,6 +57,15 @@ public class Server {
             } else {
                 ConsoleHelper.writeMessage("Ошибка ввода имени пользователя.");
                 return serverHandshake(connection);
+            }
+        }
+
+        private void notifyUsers(Connection connection, String userName) throws IOException {
+            Set<String> keySet = connectionMap.keySet();
+            for (String user : keySet) {
+                if (!user.equals(userName)) {
+                    connection.send(new Message(MessageType.USER_ADDED, user));
+                }
             }
         }
 
