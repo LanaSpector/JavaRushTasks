@@ -34,7 +34,7 @@ public class Client {
         return new SocketThread();
     }
 
-    protected void sendTextMessage(String text) throws IOException {
+    protected void sendTextMessage(String text) {
         try {
             connection.send(new Message(MessageType.TEXT, text));
         } catch (IOException e) {
@@ -43,7 +43,43 @@ public class Client {
         }
     }
 
+    public void run() {
+        SocketThread socketThread = getSocketThread();
+        socketThread.setDaemon(true);
+        socketThread.start();
+        try {
+            synchronized (this) {
+                wait();
+            }
+        } catch (InterruptedException e) {
+            ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента");
+            return;
+        }
+        if (clientConnected) {
+            ConsoleHelper.writeMessage("Соединение установлено.\n" +
+                    "Для выхода наберите команду 'exit'.");
+            while (clientConnected) {
+                String string = ConsoleHelper.readString();
+                if (string.equals("exit")) {
+                    break;
+                }
+                if (shouldSendTextFromConsole()) {
+                    sendTextMessage(string);
+                }
+            }
+        } else {
+            ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.run();
+    }
 
     public class SocketThread extends Thread {
+        @Override
+        public void run() {
+        }
     }
 }
