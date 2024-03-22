@@ -1,7 +1,6 @@
 package com.javarush.task.task24.task2413;
 
 public abstract class BaseObject {
-
     private double x;
     private double y;
     private double radius;
@@ -41,7 +40,10 @@ public abstract class BaseObject {
     abstract void move();
 
     boolean intersects(BaseObject o) {
-        return Math.hypot(x - o.x, y - o.y) <= Math.max(radius,o.radius);
+        double dx = x - o.x;
+        double dy = y - o.y;
+        double destination = Math.sqrt(dx * dx + dy * dy);
+        double destination2 = Math.max(radius, o.radius);
+        return destination <= destination2;
     }
-
 }
