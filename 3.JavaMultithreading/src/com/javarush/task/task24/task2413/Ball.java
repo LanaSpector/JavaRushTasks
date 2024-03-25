@@ -28,6 +28,9 @@ public class Ball extends BaseObject {
 
     public void setDirection(double direction) {
         this.direction = direction;
+double angle = Math.toRadians(direction);
+dx = Math.cos(angle) * speed;
+dy = -Math.sin(angle) * speed;
     }
 
     public double getDx() {
@@ -48,11 +51,23 @@ public class Ball extends BaseObject {
 
     @Override
     void draw(Canvas canvas) {
+        canvas.setPoint(x,y,'O');
 
     }
 
     @Override
     void move() {
+        if(isFrozen == false) {
+            x+=dx;
+            y+=dy;
+        }
 
+    }
+    void start() {
+        isFrozen=false;
+    }
+     
+    void checkRebound(int minx, int maxx, int miny, int maxy){
+        
     }
 }
