@@ -79,6 +79,32 @@ public class ZipFileManager {
         return files;
     }
 
+    public void extractAll(Path outputFolder) throws Exception {
+        if (!Files.isRegularFile(zipFile)) {
+            throw new WrongZipFileException();
+        }
+        if (Files.notExists(outputFolder)) {
+            Files.createDirectories(outputFolder);
+        }
+        try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))) {
+            ZipEntry zipEntry = zipInputStream.getNextEntry();
+            while (zipEntry != null) {
+                Path resolve = outputFolder.resolve(zipEntry.getName());
+                if (Files.isDirectory(resolve)) {
+                    Files.createDirectories(resolve);
+                } else if (resolve.getParent() != null && Files.notExists(resolve)) {
+                    Files.createDirectories(resolve.getParent());
+                    Files.createFile(resolve);
+                    try (OutputStream outputStream = Files.newOutputStream(resolve)) {
+                        copyData(zipInputStream, outputStream);
+                    }
+                }
+                zipEntry = zipInputStream.getNextEntry();
+            }
+            zipInputStream.closeEntry();
+        }
+    }
+
     private void addNewZipEntry(ZipOutputStream zipOutputStream, Path filePath, Path fileName) throws Exception {
         Path fullPath = filePath.resolve(fileName);
         try (InputStream inputStream = Files.newInputStream(fullPath)) {
@@ -99,4 +125,6 @@ public class ZipFileManager {
             out.write(buffer, 0, len);
         }
     }
+
+
 }
