@@ -29,11 +29,12 @@ public class Solution {
 
         @Override
         public Person read() throws IOException {
-            String string = fileScanner.nextLine();
-            String[] date = string.replaceAll("\\D", " ").trim().split(" ");
-            Calendar calendar = new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]) - 1, Integer.parseInt(date[0]));
-            String[] strings = string.replaceAll("\\d", " ").trim().split(" ");
-            return new Person(strings[1], strings[2], strings[0], calendar.getTime());
+            String[] strings = fileScanner.nextLine().split(" ");
+            String year = strings[strings.length - 1];
+            String month = strings[strings.length - 2];
+            String day = strings[strings.length - 3];
+            Date date = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day)).getTime();
+            return new Person(strings[1], strings[2], strings[0], date);
         }
 
         @Override
