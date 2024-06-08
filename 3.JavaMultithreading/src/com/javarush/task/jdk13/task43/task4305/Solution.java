@@ -20,6 +20,6 @@ public class Solution {
     }
 
     public static boolean helloWorldChecker(String s) {
-        return StringUtils.containsOnly(s, "Hello World!");
+        return StringUtils.containsOnly(s, "Helo Wrd!");
     }
 }
