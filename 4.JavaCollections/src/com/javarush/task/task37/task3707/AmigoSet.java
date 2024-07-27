@@ -1,7 +1,12 @@
 package com.javarush.task.task37.task3707;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
+
+import static com.javarush.task.task37.task3707.HashMapReflectionHelper.*;
 
 public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneable, Set<E> {
     private static final Object PRESENT = new Object();
@@ -62,5 +67,35 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
         } catch (Exception e) {
             throw new InternalError(e);
         }
+    }
+
+
+    private void writeObject(ObjectOutputStream outputStream) throws IOException {
+        outputStream.defaultWriteObject();
+
+        outputStream.writeInt(callHiddenMethod(map, "capacity"));
+        outputStream.writeInt(callHiddenMethod(map, "loadFactor"));
+
+        outputStream.writeInt(map.size());
+        for (E element : map.keySet()) {
+            outputStream.writeObject(element);
+        }
+
+    }
+
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+        inputStream.defaultReadObject();
+
+        int capacity = inputStream.readInt();
+        float loadFactor = inputStream.readFloat();
+        map = new HashMap<>(capacity, loadFactor);
+
+        int size = inputStream.readInt();
+        for (int i = 0; i < size; i++) {
+            E element = (E) inputStream.readObject();
+            map.put(element, PRESENT);
+        }
+
+
     }
 }
