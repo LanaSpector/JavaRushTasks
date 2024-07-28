@@ -12,7 +12,6 @@ import java.util.List;
 */
 
 public class Solution extends SimpleFileVisitor<Path> {
-
     public static void main(String[] args) throws IOException {
         EnumSet<FileVisitOption> options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
         final Solution solution = new Solution();
@@ -35,7 +34,6 @@ public class Solution extends SimpleFileVisitor<Path> {
     private List<String> failed = new ArrayList<>();
 
     public List<String> getArchived() {
-
         return archived;
     }
 
@@ -45,13 +43,15 @@ public class Solution extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        return super.visitFile(file, attrs);
+        if (file.getFileName().toString().matches(".*\\.(zip|rar)$")) {
+            archived.add(file.toString());
+        }
+        return FileVisitResult.CONTINUE;
     }
 
     @Override
     public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-        return super.visitFileFailed(file, exc);
+        failed.add(file.toString());
+        return FileVisitResult.SKIP_SUBTREE;
     }
-
-
 }
