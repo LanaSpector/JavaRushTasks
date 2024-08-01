@@ -117,5 +117,9 @@ public class View extends JFrame implements ActionListener {
         undoManager.discardAllEdits();
     }
 
+    public  boolean isHtmlTabSelected() {
+        return tabbedPane.getSelectedIndex() == tabbedPane.indexOfTab("HTML");
+    }
+
 
 }
