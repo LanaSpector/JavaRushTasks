@@ -38,6 +38,16 @@ public class View extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String actionCommand = e.getActionCommand();
+        switch (actionCommand) {
+            case "Новый": controller.createNewDocument();
+            case "Открыть": controller.openDocument();
+            case "Сохранить": controller.saveDocument();
+            case "Сохранить как...": controller.saveDocumentAs();
+            case "Выход": controller.exit();
+            case "О программе": this.showAbout();
+            default:;
+        }
 
     }
 
@@ -142,5 +152,7 @@ public class View extends JFrame implements ActionListener {
     public void showAbout() {
         JOptionPane.showMessageDialog(getContentPane(), "Version 1.0", "About", JOptionPane.INFORMATION_MESSAGE);
     }
+
+
 
 }
