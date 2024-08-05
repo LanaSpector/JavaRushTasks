@@ -78,7 +78,7 @@ public class Controller {
         view.selectHtmlTab();
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setFileFilter(new HTMLFileFilter());
-        if (jFileChooser.showDialog(view, "Open File") == JFileChooser.APPROVE_OPTION) {
+        if (jFileChooser.showOpenDialog(view) == JFileChooser.APPROVE_OPTION) {
             currentFile = jFileChooser.getSelectedFile();
             resetDocument();
             view.setTitle(currentFile.getName());
