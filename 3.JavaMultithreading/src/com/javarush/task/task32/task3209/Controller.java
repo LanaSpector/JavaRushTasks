@@ -75,9 +75,33 @@ public class Controller {
     }
 
     public void openDocument() {
+        view.selectHtmlTab();
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setFileFilter(new HTMLFileFilter());
+        if (jFileChooser.showOpenDialog(view) == JFileChooser.APPROVE_OPTION) {
+            currentFile = jFileChooser.getSelectedFile();
+            resetDocument();
+            view.setTitle(currentFile.getName());
+            try (FileReader reader = new FileReader(currentFile)) {
+                HTMLEditorKit kit = new HTMLEditorKit();
+                kit.read(reader, document, 0);
+            } catch (IOException | BadLocationException e) {
+                ExceptionHandler.log(e);
+            }
+            view.resetUndo();
+        }
     }
 
     public void saveDocument() {
+        view.selectHtmlTab();
+        if (currentFile != null) {
+            try (FileWriter writer = new FileWriter(currentFile)) {
+                HTMLEditorKit kit = new HTMLEditorKit();
+                kit.write(writer, document, 0, document.getLength());
+            } catch (IOException | BadLocationException e) {
+                ExceptionHandler.log(e);
+            }
+        } else saveDocumentAs();
     }
 
     public void saveDocumentAs() {
