@@ -7,9 +7,19 @@ import java.util.concurrent.TimeUnit;
 
 public final class Universe {
 
+    private static Universe universe;
+
+    public static Universe getInstance() {
+        if(universe == null) {
+            universe = new Universe();
+        }
+        return universe;
+    }
+
+
     private final Set<String> laws = new HashSet<>();
 
-    public Universe() {
+    private Universe() {
         System.out.println("Fine-tuning the laws of the universe begins.");
         tune("скорость света");
         tune("гравитационная постоянная");
