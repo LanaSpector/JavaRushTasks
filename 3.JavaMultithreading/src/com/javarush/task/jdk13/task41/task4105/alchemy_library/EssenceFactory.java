@@ -1,6 +1,9 @@
 package com.javarush.task.jdk13.task41.task4105.alchemy_library;
 
-import static com.javarush.task.jdk13.task41.task4105.alchemy_library.Type.*;
+import static com.javarush.task.jdk13.task41.task4105.alchemy_library.Type.MANA;
+import static com.javarush.task.jdk13.task41.task4105.alchemy_library.Type.STAMINA;
+import static com.javarush.task.jdk13.task41.task4105.alchemy_library.Type.MANA;
+import static com.javarush.task.jdk13.task41.task4105.alchemy_library.Type.STAMINA;
 
 public class EssenceFactory {
     public static Essence extract(Potion file) {
