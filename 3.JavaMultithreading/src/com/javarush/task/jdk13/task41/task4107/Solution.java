@@ -14,7 +14,7 @@ public class Solution {
     private static ProgrammingCourse course;
 
     public static void main(String[] args) {
-        choose("web");
+        choose("java");
         startLearningProcess();
     }
 
