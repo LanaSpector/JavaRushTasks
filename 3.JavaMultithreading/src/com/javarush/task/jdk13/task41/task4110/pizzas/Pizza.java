@@ -28,4 +28,13 @@ public class Pizza {
     public String getTopping() {
         return topping;
     }
+
+    public String print() {
+        String pizza = type.getTitle() + "\n";
+        pizza += "Тесто: " + getDough() + "\n";
+        pizza += "Соус: " + getSauce() + "\n";
+        pizza += "Начинка: " + getTopping() + "\n";
+
+        return pizza;
+    }
 }
