@@ -7,7 +7,7 @@ public class VeryHeavyEntity implements Entity {
 
     private VeryHeavyEntity(int id) {
         try {
-            TimeUnit.SECONDS.sleep(30);
+            TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
