@@ -1,5 +1,7 @@
 package com.javarush.task.jdk13.task41.task4116.animals;
 
+import com.javarush.task.jdk13.task41.task4116.visitor.Visitor;
+
 public class Cow extends Animal {
 
     private int litersOfMilk;
@@ -26,5 +28,10 @@ public class Cow extends Animal {
     public void gore() {
         stars++;
         System.out.println(getName() + " забодала зеваку.");
+    }
+
+    @Override
+    public String accept(Visitor visitor) {
+        return visitor.visitCow(this);
     }
 }

@@ -1,5 +1,7 @@
 package com.javarush.task.jdk13.task41.task4116.animals;
 
+import com.javarush.task.jdk13.task41.task4116.visitor.Visitor;
+
 public class Cat extends Animal {
 
     private int mice;
@@ -26,5 +28,10 @@ public class Cat extends Animal {
     public void licks() {
         kilogramsOfFur += 0.005;
         System.out.println(getName() + " лижет шерсть.");
+    }
+
+    @Override
+    public String accept(Visitor visitor) {
+        return visitor.visitCat(this);
     }
 }
