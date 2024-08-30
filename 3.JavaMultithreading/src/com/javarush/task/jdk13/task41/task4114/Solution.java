@@ -1,11 +1,10 @@
-//package com.javarush.task.jdk13.task41.task4114;
-package task41.task4114;
+package com.javarush.task.jdk13.task41.task4114;
 
 /* 
 Калькулиссимо
 */
 
-import task41.task4114.Calculator;
+import com.javarush.task.jdk13.task41.task4114.Calculator;
 
 public class Solution {
 
