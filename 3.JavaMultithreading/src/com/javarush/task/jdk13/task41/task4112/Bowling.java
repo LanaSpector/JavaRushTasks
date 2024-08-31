@@ -3,23 +3,35 @@ package com.javarush.task.jdk13.task41.task4112;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Bowling {
     private final Queue<Track> tracks;
     private final Queue<PairOfShoes> shoesShelf;
 
     public Bowling(int tracksNumber) {
-        tracks = new ConcurrentLinkedDeque<>();
-        shoesShelf = new ConcurrentLinkedDeque<>();
+//        tracks = new ConcurrentLinkedDeque<>();
+//        shoesShelf = new ConcurrentLinkedDeque<>();
 
-        for (int i = 1; i <= tracksNumber; i++) {
-            tracks.offer(new Track(i));
-        }
+//        for (int i = 1; i <= tracksNumber; i++) {
+//            tracks.offer(new Track(i));
+//        }
 
-        for (int i = 0; i < 50; i++) {
-            int randomNumber = ThreadLocalRandom.current().nextInt(38, 46);;
-            shoesShelf.offer(new PairOfShoes(randomNumber));
-        }
+//        for (int i = 0; i < 50; i++) {
+//            int randomNumber = ThreadLocalRandom.current().nextInt(38, 46);
+//            shoesShelf.offer(new PairOfShoes(randomNumber));
+//        }
+//        IntStream.rangeClosed(1, tracksNumber).forEach(i -> tracks.offer(new Track(i)));
+        tracks = IntStream.rangeClosed(1, tracksNumber)
+                .mapToObj(Track::new)
+                .collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
+
+        shoesShelf = IntStream.range(0, 50)
+                .mapToObj(i -> ThreadLocalRandom.current().nextInt(38, 46))
+                .map(PairOfShoes::new)
+                .collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
+
     }
 
     public synchronized Track acquireTrack() {
