@@ -1,9 +1,11 @@
 package com.javarush.task.jdk13.task41.task4118.ui;
 
+import com.javarush.task.jdk13.task41.task4118.states.ReadyState;
+import com.javarush.task.jdk13.task41.task4118.states.State;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.javarush.task.jdk13.task41.task4118.ui.State.*;
 
 public class Player {
     private State state;
@@ -12,11 +14,19 @@ public class Player {
     private int currentTrack = 0;
 
     public Player() {
-        state = READY;
+        state = new ReadyState(this);
         setPlaying(true);
         for (int i = 1; i <= 12; i++) {
             playlist.add("Track " + i);
         }
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void setPlaying(boolean playing) {
@@ -27,64 +37,7 @@ public class Player {
         return playing;
     }
 
-    public String onLock() {
-        playing = false;
-        
-        switch (state) {
-            case LOCKED:
-                if (isPlaying()) {
-                    state = READY;
-                    return "Stop playing";
-                } else {
-                    return "Locked...";
-                }
-            case PLAYING:
-                state = LOCKED;
-                setCurrentTrackAfterStop();
-                return "Stop playing";
-            case READY:
-                state = LOCKED;
-                return "Locked...";
-        }
-        return "";
-    }
 
-    public String onPlay() {
-        switch (state) {
-            case LOCKED:
-                state = READY;
-                return "Ready";
-            case PLAYING:
-                state = READY;
-                return "Paused...";
-            case READY:
-                state = PLAYING;
-                return startPlayback();
-        }
-        return "";
-    }
-
-    public String onNext() {
-        switch (state) {
-            case LOCKED:
-            case READY:
-                return "Locked...";
-            case PLAYING:
-                return nextTrack();
-        }
-        return "";
-    }
-
-    public String onPrevious() {
-        switch (state) {
-            case LOCKED:
-            case READY:
-                return "Locked...";
-            case PLAYING:
-                return previousTrack();
-        }
-        return "";
-    }
 
     public String startPlayback() {
         return "Playing " + playlist.get(currentTrack);
@@ -108,5 +61,15 @@ public class Player {
 
     public void setCurrentTrackAfterStop() {
         this.currentTrack = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "state=" + state +
+                ", playing=" + playing +
+                ", playlist=" + playlist +
+                ", currentTrack=" + currentTrack +
+                '}';
     }
 }
