@@ -2,21 +2,26 @@ package com.javarush.task.jdk13.task41.task4120.games;
 
 import java.util.Random;
 
-public class Catan {
+public class Catan extends BoardGame {
 
-    private int playersAmount;
+    @Override
+    protected void initialize() {
+        System.out.println(
+                "---------------------------------------------------------"
+                + "Подготовка к игре Колонизаторы:"
+                + "- составляем остров для колонизации;"
+                + "- раздаем игрокам фигурки поселений, городов и дорог;"
+                + "- раскладываем колоды сырья и развития.");
 
-    public final void start(int playersAmount) {
-        this.playersAmount = playersAmount;
+    }
 
-        System.out.println("""
-                ---------------------------------------------------------
-                Подготовка к игре Колонизаторы:
-                    - составляем остров для колонизации;
-                    - раздаем игрокам фигурки поселений, городов и дорог;
-                    - раскладываем колоды сырья и развития.""");
+    @Override
+    protected void play() {
         System.out.println("Игроки колонизируют остров, торгуют ресурсами, воруют ресурсы, интригуют и строят козни...");
+    }
+
+    @Override
+    protected void end() {
         System.out.println("Один из игроков набрал 10 победных очков.");
-        System.out.println("Победил игрок № " + (new Random().nextInt(playersAmount) + 1));
     }
 }
