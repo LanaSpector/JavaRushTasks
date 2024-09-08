@@ -9,9 +9,9 @@ public abstract class BoardGame {
         this.playersAmount = playersAmount;
     }
 
-    abstract protected void initialize();
-    abstract protected void play();
-    abstract protected void end();
+    protected abstract void initialize();
+    protected abstract void play();
+    protected abstract void end();
     protected void printWinner() {
         System.out.println("Победил игрок № " + (new Random().nextInt(playersAmount) + 1));
     }

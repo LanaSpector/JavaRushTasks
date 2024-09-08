@@ -26,11 +26,11 @@ public class LockedState extends State{
 
     @Override
     public String onNext() {
-        return "";
+        return "Locked...";
     }
 
     @Override
     public String onPrevious() {
-        return "";
+        return "Locked...";
     }
 }

@@ -20,6 +20,7 @@ public class CreditCardStrategy implements PaymentStrategy {
 
     @Override
     public void pay(int amount) {
-
+        // много важного кода
+        System.out.printf("Оплачено товаров на $%d кредитной картой %s.\n", amount, cardNumber);
     }
 }

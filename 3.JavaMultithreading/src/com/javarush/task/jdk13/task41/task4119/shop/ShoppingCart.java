@@ -41,5 +41,17 @@ public class ShoppingCart {
     public void pay() {
         int amount = calculateTotal();
         strategy.pay(amount);
+//        switch (type) {
+//            case CASH:
+//                // много важного кода
+//                System.out.printf("Оплачено товаров на $%d наличными.\n", amount);
+//                break;
+//            case PAYPAL:
+//
+//                break;
+//            case CREDIT_CARD:
+//
+//                break;
+//        }
     }
 }

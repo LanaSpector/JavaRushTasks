@@ -4,9 +4,7 @@ package com.javarush.task.jdk13.task41.task4115;
 У вас скидка!
 */
 
-import com.javarush.task.jdk13.task41.task4115.listeners.EmailNotificationListener;
-import com.javarush.task.jdk13.task41.task4115.listeners.FirebasePushNotificationListener;
-import com.javarush.task.jdk13.task41.task4115.listeners.PigeonMailNotificationListener;
+import com.javarush.task.jdk13.task41.task4115.listeners.*;
 
 import static com.javarush.task.jdk13.task41.task4115.listeners.NotificationType.*;
 

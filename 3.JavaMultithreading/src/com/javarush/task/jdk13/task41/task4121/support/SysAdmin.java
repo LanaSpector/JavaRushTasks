@@ -7,6 +7,7 @@ public class SysAdmin extends TechSupport {
             System.out.println("\t+ Бородатый админ выслушал проблему и от этого она решилась сама собой.");
         } else {
             System.out.println("\t- Сисадмин походил с бубном вокруг проблемы и продолжил плевать в потолок.");
+            passAlongTheChain(problem);
         }
     }
 }

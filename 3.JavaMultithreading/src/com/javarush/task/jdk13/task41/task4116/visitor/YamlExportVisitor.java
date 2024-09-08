@@ -8,21 +8,24 @@ public class YamlExportVisitor implements Visitor {
 
     @Override
     public String visitCat(Cat cat) {
-        return "--- !<Cat> name: " + cat.getName()
-                + " mice: " + cat.miceCaught()
-                + " kilogramsOfFur: " + cat.furEaten();
+        return "--- !<Cat>\n" +
+                "name: \"" + cat.getName() + "\"\n" +
+                "mice: " + cat.miceCaught() + "\n" +
+                "kilogramsOfFur: " + cat.furEaten();
     }
 
     @Override
     public String visitCow(Cow cow) {
-        return "--- !<Cow> name: " + cow.getName()
-                + " milk: " + cow.milkedLiters()
-                + " stars: " + cow.getStars();
+        return "--- !<Cow>\n" +
+                "name: \"" + cow.getName() + "\"\n" +
+                "litersOfMilk: " + cow.milkedLiters() + "\n" +
+                "stars: " + cow.getStars();
     }
 
     @Override
     public String visitDog(Dog dog) {
-        return "--- !<Dog> name: " + dog.getName()
-                + " bones:" + dog.bonesGnawed();
+        return "--- !<Dog>\n" +
+                "name: \"" + dog.getName() + "\"\n" +
+                "bones: " + dog.bonesGnawed();
     }
 }

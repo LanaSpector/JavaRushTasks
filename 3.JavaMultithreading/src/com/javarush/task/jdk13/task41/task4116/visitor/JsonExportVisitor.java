@@ -7,22 +7,27 @@ import com.javarush.task.jdk13.task41.task4116.animals.Dog;
 public class JsonExportVisitor implements Visitor {
     @Override
     public String visitCat(Cat cat) {
-        return "{name : " + cat.getName() + ", "
-                + "mice : " + cat.miceCaught() + ", "
-                + "kilogramsOfFur : " + cat.furEaten() + "}";
+        return "{\n" +
+                "  \"name\" : \"" + cat.getName() + "\",\n" +
+                "  \"mice\" : \"" + cat.miceCaught() + "\",\n" +
+                "  \"kilogramsOfFur\" : \"" + cat.furEaten() + "\"\n" +
+                "}";
     }
 
     @Override
     public String visitCow(Cow cow) {
-        return "{name : " + cow.getName() + ", "
-                + "milk : " + cow.milkedLiters() + ", "
-                + "stars : " + cow.getStars() + "}";
+        return "{\n" +
+                "  \"name\" : \"" + cow.getName() + "\",\n" +
+                "  \"litersOfMilk\" : \"" + cow.milkedLiters() + "\",\n" +
+                "  \"stars\" : \"" + cow.getStars() + "\"\n" +
+                "}";
     }
 
     @Override
     public String visitDog(Dog dog) {
-        return "{name : " + dog.getName()+", "
-                + "bones : " + dog.bonesGnawed()
-                + "}";
+        return "{\n" +
+                "  \"name\" : \"" + dog.getName() + "\",\n" +
+                "  \"bones\" : \"" + dog.bonesGnawed() + "\"\n" +
+                "}";
     }
 }
