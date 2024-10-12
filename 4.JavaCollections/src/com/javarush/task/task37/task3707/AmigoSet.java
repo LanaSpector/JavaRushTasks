@@ -74,7 +74,7 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
         outputStream.defaultWriteObject();
 
         outputStream.writeInt(callHiddenMethod(map, "capacity"));
-        outputStream.writeInt(callHiddenMethod(map, "loadFactor"));
+        outputStream.writeFloat(callHiddenMethod(map, "loadFactor"));
 
         outputStream.writeInt(map.size());
         for (E element : map.keySet()) {
