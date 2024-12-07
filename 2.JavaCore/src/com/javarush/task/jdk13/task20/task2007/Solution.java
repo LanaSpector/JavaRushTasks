@@ -23,7 +23,7 @@ public class Solution {
 
     public static String convertToJSON(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
         return mapper.writeValueAsString(object);
     }
 
