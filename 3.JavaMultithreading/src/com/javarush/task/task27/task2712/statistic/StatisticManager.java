@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// регистрация событий в хранилище
 public class StatisticManager {
     private static StatisticManager instance;
     private StatisticStorage statisticStorage = new StatisticStorage();
@@ -22,16 +23,23 @@ public class StatisticManager {
         return instance;
     }
 
+    // регистрируем событие в хранилище.
     public void register(EventDataRow data) {
+        statisticStorage.put(data);
     }
 
+    // Хранилище связано 1 к 1 с менеджером
     private class StatisticStorage {
-        private Map<EventType, List<EventDataRow>> storage = new HashMap<>();
+        private Map<EventType, List<EventDataRow>> storage = new HashMap<>(); // хранение данных внутри себя в виде мапы/словаря
 
-        public StatisticStorage() {
+        private StatisticStorage() {
             for (EventType type : EventType.values()) {
                 this.storage.put(type, new ArrayList<EventDataRow>());
             }
+        }
+
+        private void put(EventDataRow data) {
+            storage.get(data.getType()).add(data);
         }
     }
 }

@@ -9,8 +9,9 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// Планшет создает заказы (Order), наблюдается (Observable) поваром
 public class Tablet extends Observable {
-    private final int number;
+    private final int number; // номер планшета
     private static final Logger logger = Logger.getLogger(Tablet.class.getName());
 
     public Tablet(int number) {
@@ -22,19 +23,17 @@ public class Tablet extends Observable {
         try {
             order = new Order(this);
 
-            int time = order.getTotalCookingTime() * 60;
-            AdvertisementManager manager = new AdvertisementManager(time);
-            manager.processVideos();
-
-            ConsoleHelper.writeMessage(order.toString());
-
-            setChanged();
-
             if (!order.isEmpty()) {
+                setChanged();
                 notifyObservers(order);
+
+                int time = order.getTotalCookingTime() * 60;
+                AdvertisementManager manager = new AdvertisementManager(time);
+                manager.processVideos();
             }
+
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Console is unavailable.");
+            logger.log(Level.SEVERE, "Console is unavailable."); // исключение ввода-вывода
         } catch (NoVideoAvailableException e) {
             logger.log(Level.INFO, "No video is available for the order " + order);
         }
